@@ -31,11 +31,25 @@ export class ProdutoController implements ProdutoRepository{
     }
 
     atualizar(produto: Produto): void {
-        throw new Error("Method not implemented.");
+        let buscaProduto = this.buscarNoArray(produto.id);
+
+        if(buscaProduto !== null){
+            this._listaProdutos[(this._listaProdutos.indexOf(buscaProduto))] = produto;
+            console.log("\nO Produto atualizado com sucesso!\n");
+        } else {
+            console.log("\nO Produto não foi encontrado");
+        }
     }
 
     deletar(id: number): void {
-        throw new Error("Method not implemented.");
+        let buscaProduto = this.buscarNoArray(id);
+
+        if(buscaProduto !== null){
+            this._listaProdutos.splice(this._listaProdutos.indexOf(buscaProduto),1);
+            console.log("\nProduto excluido com sucesso!\n");
+        } else {
+            console.log("\nO Produto não foi encontrado");
+        }
     }
 
     //Auxiliares
